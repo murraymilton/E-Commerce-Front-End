@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 
 function App() {
+  const [products, setProducts] = useState([]);
+  
+  useEffect (
+    () => {
+      axios.get('https://localhost:44394/api/product/')
+      .then(res => setProducts(res.data))
+    }, [])
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <section className="colored-section">
+        {
+          products.map((product) => {
+            return (
+              <React.Fragment key={product.id}>
+                <h1>Details of A Product</h1>
+        
+                <p>Name: {product.name}</p>
+                <p>Price: {product.price}</p>
+                <p>Description: {product.description}</p>
+                <p>Category: {product.category}</p>
+                <p>Price: {product.price}</p>
+                <p>Average Rating: {product.reviews}</p>
+              </React.Fragment>
+            )
+          })
+        }
+      </section>
+    </>
   );
 }
 
