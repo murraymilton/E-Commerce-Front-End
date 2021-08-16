@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 // import {
 //   BrowserRouter as Router,
@@ -72,6 +73,20 @@ function App() {
           }
     </Router>
   );   
+=======
+import React from 'react';
+import Home from './Components/Home/home.jsx';
+
+function App() {
+  
+  return (
+    <>
+      {/* Leads to Login Page */}
+      {/* <Login /> */}
+      <Home /> 
+    </>
+  );
+>>>>>>> 376051342d17e5ef070c0e54efdb8cce2e587d38
 }
 
 
