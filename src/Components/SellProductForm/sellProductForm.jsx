@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import {Redirect} from 'react-router-dom';
+import From from 'react-bootstrap/Form';
+import { InputGroup } from 'react-bootstrap';
+import { Button } from 'react-bootstrap/Button';
 import useForm from '../useForm/useForm';
 import axios from 'axios';
 
 
 
-export default function SellerNewProduct(props){
+export default function SellerNewProduct(){
 
     const[token, setToken] = useState(null);
     const[redirect, setRedirect] = useState(false);
@@ -31,11 +35,6 @@ export default function SellerNewProduct(props){
         catch(error){
             alert(error);
         }
-    }
-
-    function ProductEntryOptions(){
-        let productNameEntry= products.map(entry => {return <option key={entry.name}>{entry.name}</option>});
-        return productNameEntry;
      
     async function submitForm(){
         let productformEntry = products.filter(entry => entry.name === values.productformEntry);
@@ -44,7 +43,7 @@ export default function SellerNewProduct(props){
             ProductAdd = {Name: values.Name, Description: values.Description, Category: values.Category, ProductId: productformEntry[0].productId, Price:decimal(values.Price)};
         }
         catch(err){
-            alert("Your product could not be added \n" + error)
+            alert("Your product could not be added " + error)
         }
         try{
             let response = await axios.post('https://localhost:44394/api/products', newProductId, { headers: {Authorization: 'Bearer ' + token}});
@@ -57,32 +56,37 @@ export default function SellerNewProduct(props){
         }
     }
 
-    return(
-        <div className="row center">
-            {redirect &&
-            <Redirect to={{pathname: '/product', state: {productId: newProductId}}} />}
-            <div className='col'/>
-            <div className='col'>
-                <h1>New Product</h1>
-                    <Form onSubmit={handleChange}>
-                        <Form.Group>
-                            <Form.Label>Product Name</Form.Label>
-                            <Form.Control type="text" name="Name" onChange={handleChange} value={values.Name} required={true} />
-                        </Form.Group>
-                        <Form.Group ControlId="Category">
-                            <Form.Label>Category</Form.Label>
-                            <
-                        </Form.Group>
-
-                    </Form>
-            </div>
-
-               
-
+    return( <div className='row text-center'>
+    {redirect && 
+    <Redirect to={{pathname: '/product', state: { productId: newProductId}}} /> }
+    <div className='col' />
+    <div className='col'>
+        <h1>New Listing</h1>
+            <Form onSubmit={handleSubmit}>
+                <Form.Group controlId="Name">
+                    <Form.Label>Game Title</Form.Label>
+                    <Form.Control type="text" name="Name" onChange={handleChange} value={values.Name} required={true} />
+                </Form.Group>
+                <Form.Group controlId="Category">
+                    <Form.Label>Game Title</Form.Label>
+                    <Form.Control type="text" name="Category" onChange={handleChange} value={values.Category} required={true} />
+                </Form.Group>
+                <Form.Group controlId="Price">
+                    <Form.Label>Price</Form.Label>
+                    <InputGroup>
+                    <InputGroup.Text>$</InputGroup.Text>
+                    <Form.Control type="number" min={0.01} step={0.01} name="Price" onChange={handleChange} value={values.Price} required={true} />
+                    </InputGroup>
+                </Form.Group>
+                <Form.Group controlId="Description">
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control type="text" as="textarea" rows={5} name="Description" onChange={handleChange} value={values.Description} required={true} />
+                </Form.Group>
+                <Button className='mt-2' type="submit">Submit</Button>
+            </Form>
         </div>
-        
-    
-    }
+        <div className='col' />
+</div>
 
-
-    
+)
+}
