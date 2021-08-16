@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 
 
@@ -14,13 +14,13 @@ export default function SearchResults(props){
         }
     }, [props]);
 
-    async function allSearch(){
-        if (!props.location.state.showAll){
-            try {
-                let response = await axios.get(`https://localhost:44394/api/product/`);
-                setResults(response.data);
-            }
-            catch(err){
-                alert(err);
-            }
-        }
+    // async function allSearch(){
+    //     if (!props.location.state.showAll){
+    //         try {
+    //             let response = await axios.get(`https://localhost:44394/api/product/`);
+    //             setResults(response.data);
+    //         }
+    //         catch(err){
+    //             alert(err);
+    //         }
+    //     }
