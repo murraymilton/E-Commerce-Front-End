@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import ShowAllProducts from '../ShowAllProducts/showAllProducts';
+import ViewProducts from '../ViewProducts/viewProducts';
 
 const Home = () => {
+    const token = "valid";
     const [products, setProducts] = useState([]);
   
     useEffect (
@@ -11,11 +13,23 @@ const Home = () => {
         .then(res => setProducts(res.data))
         }, [])    
 
-    return (  
-        // <Navbar />
-        // <Categories />
-        <ShowAllProducts products={products} />
-    );
+    if (token !== null)
+    {
+        return (  
+            <>
+                {/* <ShowAllProducts products={products} /> */}
+                <ViewProducts products={products} />
+            </>
+        );
+    }
+    else
+    {
+        return (
+            <>
+                <h1>Hey yo!</h1>
+            </>
+        );
+    }
 }
  
 export default Home;
