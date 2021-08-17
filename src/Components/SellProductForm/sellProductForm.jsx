@@ -27,9 +27,9 @@ export default function SellerNewProduct(){
     }, []);
 
     async function submitForm(){
-        let ProductAdd;
+        let newProduct;
         try{
-            ProductAdd = {Name: values.Name, Description: values.Description, Category: values.Category, Price:decimal(values.Price)};
+            newProduct = {Name: values.Name, Description: values.Description, Category: values.Category, Price:parseFloat(values.Price)};
         }
         catch(error){
             alert("Your product could not be added " + error)
@@ -79,4 +79,4 @@ export default function SellerNewProduct(){
 
 )
 };
-}
+
