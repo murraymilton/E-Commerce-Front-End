@@ -4,33 +4,21 @@ import Sell
 import ShowAllProducts from '../ShowAllProducts/showAllProducts';
 import ViewProducts from '../ViewProducts/viewProducts';
 
-const Home = () => {
-    const token = "valid";
+const Home = (props) => {
     const [products, setProducts] = useState([]);
-  
-    useEffect (
-        () => {
+
+    useEffect (() => {
         axios.get('https://localhost:44394/api/product/')
         .then(res => setProducts(res.data))
-        }, [])    
+        .catch(error => console.log(error))
+    }, [])    
 
-    if (token !== null)
-    {
-        return (  
-            <>
-                {/* <ShowAllProducts products={products} /> */}
-                <ViewProducts products={products} />
-            </>
-        );
-    }
-    else
-    {
-        return (
-            <>
-                <h1>Hey yo!</h1>
-            </>
-        );
-    }
+    return (  
+        <>
+            <h1>User Home</h1>
+            <ViewProducts products={products} token={props.token} currentUser={props.currentUser} />
+        </>
+    );
 }
  
 export default Home;

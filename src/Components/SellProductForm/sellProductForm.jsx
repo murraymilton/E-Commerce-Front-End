@@ -13,7 +13,7 @@ export default function SellerNewProduct(){
 
     const[token, setToken] = useState(null);
     const[redirect, setRedirect] = useState(false);
-    const{values, handleChange, handleSubmit, setValues} = useForm(submitForm);
+    const{values, handleChange, handleSubmit} = useForm(submitForm);
     const[newProductId, setNewProductId] = useState(null);
   
     useEffect(() => {

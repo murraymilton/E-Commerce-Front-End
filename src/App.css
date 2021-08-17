@@ -1,0 +1,13 @@
+/* Colored and White */
+.colored-section {
+    text-align: center;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    background-color: lightgreen;
+}
+
+.white-section {
+    text-align: center;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+}
