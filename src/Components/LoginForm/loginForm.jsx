@@ -16,8 +16,8 @@ const LoginForm = (props) => {
 
     const login = async () => {
         await axios.post(`https://localhost:44394/api/authentication/login`, values)
-            .then(res => props.setToken(res.data))
-            .catch(error => console.log(error));
+        .then(response => props.getUser(response.data))    
+        .catch(error => console.log(error));
     }
 
     return (  

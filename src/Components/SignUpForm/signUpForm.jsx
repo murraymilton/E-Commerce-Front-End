@@ -4,7 +4,6 @@ import useForm from '../UseForm/useForm';
 import { useHistory } from "react-router-dom";
 
 
-
 const SignUpForm = (props) => {
   const history = useHistory();
   
@@ -17,7 +16,7 @@ const SignUpForm = (props) => {
   
   const register = async () => {
     await axios.post(`https://localhost:44394/api/authentication`, values)
-    .then(res => props.setToken(res.data))
+    .then(response => props.getUser(response.data)) // token
     .catch(error => console.log(error));
   }
   
