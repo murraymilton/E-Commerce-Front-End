@@ -52,20 +52,4 @@ function App() {
   );   
 }
 
-<<<<<<< HEAD
 export default App;
-=======
-export default App;
-
-
-{/* <Route 
-                    path='/sellProductForm' 
-                    render={props => {
-                        if (!user){
-                            return <Redirect to="/" />;
-                        }
-                        else{
-                            return <sellProductForm {...props} user={user}/>
-                        }
-                    }} /> */}
->>>>>>> 28589bb4e1fc5a70a01a2a6b6e96887ac2448df3
