@@ -53,11 +53,11 @@ export default function SellerNewProduct(){
         <h1>New Listing</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="Name">
-                    <Form.Label>Game Title</Form.Label>
+                    <Form.Label>Product Name</Form.Label>
                     <Form.Control type="text" name="Name" onChange={handleChange} value={values.Name} required={true} />
                 </Form.Group>
                 <Form.Group controlId="Category">
-                    <Form.Label>Game Title</Form.Label>
+                    <Form.Label>Category</Form.Label>
                     <Form.Control type="text" name="Category" onChange={handleChange} value={values.Category} required={true} />
                 </Form.Group>
                 <Form.Group controlId="Price">
@@ -79,4 +79,3 @@ export default function SellerNewProduct(){
 
 )
 };
-
