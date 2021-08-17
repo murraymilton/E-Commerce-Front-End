@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Redirect} from 'react-router-dom';
-import From from 'react-bootstrap/Form';
+import jwtDecode from 'jwt-decode'
+import Form from 'react-bootstrap/Form';
 import { InputGroup } from 'react-bootstrap';
 import { Button } from 'react-bootstrap/Button';
 import useForm from '../useForm/useForm';
@@ -14,39 +15,27 @@ export default function SellerNewProduct(){
     const[redirect, setRedirect] = useState(false);
     const{values, handleChange, handleSubmit, setValues} = useForm(submitForm);
     const[newProductId, setNewProductId] = useState(null);
-    const[products, setProducts] = useState(null);
   
     useEffect(() => {
         const jwt = localStorage.getItem('token')
         try{
+            const user = jwtDecode(jwt);
+            this.setState({user})
             setToken(jwt);
         }
         catch{};
-        getAllProducts();
     }, []);
 
-    async function getAllProducts(){
-        try{
-            let res = await axios.get('https//localhost:44394/api/products');
-            let allProducts = res.data;
-            setValues({Name: "", Description:"", Category:"", ProductName: allProducts[0].Name, Price:0})
-            setNewProductId(allProducts)
-        }
-        catch(error){
-            alert(error);
-        }
-     
     async function submitForm(){
-        let productformEntry = products.filter(entry => entry.name === values.productformEntry);
         let ProductAdd;
         try{
-            ProductAdd = {Name: values.Name, Description: values.Description, Category: values.Category, ProductId: productformEntry[0].productId, Price:decimal(values.Price)};
+            ProductAdd = {Name: values.Name, Description: values.Description, Category: values.Category, Price:decimal(values.Price)};
         }
-        catch(err){
+        catch(error){
             alert("Your product could not be added " + error)
         }
         try{
-            let response = await axios.post('https://localhost:44394/api/products', newProductId, { headers: {Authorization: 'Bearer ' + token}});
+            let response = await axios.post('https://localhost:44394/api/products', newProduct, { headers: {Authorization: 'Bearer ' + token}});
             setProducts(response.data.productId);
             console.log(response);
             setRedirect(true);
@@ -89,4 +78,5 @@ export default function SellerNewProduct(){
 </div>
 
 )
+};
 }
