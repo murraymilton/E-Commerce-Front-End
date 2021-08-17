@@ -44,7 +44,7 @@ function App() {
           <Route exact path="/login" render={ (props) => <LoginForm {...props} setToken={setToken} /> } />
           <Route path="/signup" render={ (props) => <SignUpForm  {...props} setToken={setToken} /> } />
           {
-            token ? <Route path="/dashboard" component={Home} /> : <Route path="/landing" component={LandingPage} />
+            token ? <Route path="/dashboard" component={Home} /> : <></>
           }
         </Switch>
       </Router>
