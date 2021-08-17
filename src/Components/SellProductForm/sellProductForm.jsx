@@ -36,12 +36,12 @@ export default function SellerNewProduct(){
         }
         try{
             let response = await axios.post('https://localhost:44394/api/products', newProduct, { headers: {Authorization: 'Bearer ' + token}});
-            setProducts(response.data.productId);
+            setNewProductId(response.data.productId);
             console.log(response);
             setRedirect(true);
         }
-        catch(err){
-            alert(err);
+        catch(error){
+            alert(error);
         }
     }
 
