@@ -10,13 +10,17 @@ const ShowAllProducts = ({ products, productsInCart }) => {
     <>
       {        
         products.map((item) => {
-          if (item.productId === 1)
+          if (item.productId === 1) // Shirt ...
           {
             return (
               <>
                 <p>{item.name}</p>
                 <p>{item.description}</p>
                 <p>{item.price}</p>
+                {/* <Rating 
+                rating={product.rating} 
+                numReviews={product.numReviews}>
+                </Rating> */}
               </>
             );
           }

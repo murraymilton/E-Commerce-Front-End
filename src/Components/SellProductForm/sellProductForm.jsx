@@ -3,8 +3,8 @@ import {Redirect} from 'react-router-dom';
 import jwtDecode from 'jwt-decode'
 import Form from 'react-bootstrap/Form';
 import { InputGroup } from 'react-bootstrap';
-import { Button } from 'react-bootstrap/Button';
-import useForm from '../useForm/useForm';
+import Button from 'react-bootstrap/Button'
+import useForm from '../UseForm/useForm';
 import axios from 'axios';
 
 
@@ -13,7 +13,7 @@ export default function SellerNewProduct(){
 
     const[token, setToken] = useState(null);
     const[redirect, setRedirect] = useState(false);
-    const{values, handleChange, handleSubmit, setValues} = useForm(submitForm);
+    const{values, handleChange, handleSubmit} = useForm(submitForm);
     const[newProductId, setNewProductId] = useState(null);
   
     useEffect(() => {
@@ -53,11 +53,11 @@ export default function SellerNewProduct(){
         <h1>New Listing</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="Name">
-                    <Form.Label>Game Title</Form.Label>
+                    <Form.Label>Product Name</Form.Label>
                     <Form.Control type="text" name="Name" onChange={handleChange} value={values.Name} required={true} />
                 </Form.Group>
                 <Form.Group controlId="Category">
-                    <Form.Label>Game Title</Form.Label>
+                    <Form.Label>Category</Form.Label>
                     <Form.Control type="text" name="Category" onChange={handleChange} value={values.Category} required={true} />
                 </Form.Group>
                 <Form.Group controlId="Price">
@@ -79,4 +79,3 @@ export default function SellerNewProduct(){
 
 )
 };
-
