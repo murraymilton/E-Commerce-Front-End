@@ -1,23 +1,21 @@
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import { Redirect } from 'react-router-dom';
 
 
-const ViewProducts = ({ products, token, currentUser}) => {
-
-    if (token !== null)
+const ViewProducts = ({ currentUser }) => {
+    if (currentUser === null)
     {
-        return (
-            <>
-                {
-                    console.log(products)
-                }
-                {
-                    console.log(currentUser)
-                }
-                <h1>Hi {currentUser.id}!</h1>
-            </> 
-        );
+        return <Redirect to="/login" />;
     }
+    return (
+        <>
+            {
+                console.log(currentUser)
+            }
+            <h1>Hi {currentUser.firstName}!</h1>
+        </> 
+    );
 }
  
 export default ViewProducts;

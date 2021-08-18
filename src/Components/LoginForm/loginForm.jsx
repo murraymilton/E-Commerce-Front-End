@@ -22,34 +22,36 @@ const LoginForm = (props) => {
 
     return (  
         <>
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="username">
-                        Username:
-                    </label>
-                    <input
-                    id="userName"
-                    type="text"
-                    name="username"
-                    onChange={handleChange}
-                    value={values.username}
-                    required={true}
-                    />
-                    <label htmlFor="password">
-                        Password:
-                    </label>
-                    <input
-                    id="passWord"
-                    type="password"
-                    name="password"
-                    onChange={handleChange}
-                    value={values.password}
-                    required={true}
-                    />
-                </div>
-                <button type="submit" className="btn btn-dark">Login</button>
-            </form>
+            <section className="colored-section">
+                <h1>Login</h1>
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="username">
+                            Username:
+                        </label>
+                        <input
+                        id="userName"
+                        type="text"
+                        name="username"
+                        onChange={handleChange}
+                        value={values.username}
+                        required={true}
+                        />
+                        <label htmlFor="password">
+                            Password:
+                        </label>
+                        <input
+                        id="passWord"
+                        type="password"
+                        name="password"
+                        onChange={handleChange}
+                        value={values.password}
+                        required={true}
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-dark">Login</button>
+                </form>
+            </section>
         </>
     );
 }
