@@ -10,14 +10,15 @@ import ShoppingCart from './Components/ShoppingCart/shoppingCart';
 import NavigationBar from './Components/NavigationBar/navigationBar';
 import ShowAllProducts from './Components/ShowAllProducts/showAllProducts';
 import SellerNewProduct from './Components/SellProductForm/sellProductForm';
-import { BrowserRouter as Router, Redirect, Switch, Route, Link, BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Switch, Route, Link } from "react-router-dom";
 
 function App() {
   const [token, setToken] = useState(); // The token inside of localStorage.
   const [currentUser, setCurrentUser] = useState({}); // Current IdentityUser in localStorage.
   const [products, setProducts] = useState([{}]); // Products in general (all products inside the database).
   const [productsInCart, setProductsInCart] = useState([{}]); // Products in a user's cart.
-  
+  // const [reviews, setReviews] = useState([{}]); // Get reviews attached to specific.
+
   const logout = () => {
     localStorage.clear();
     window.location.href = "/Login";
@@ -37,6 +38,7 @@ function App() {
     }
     getAllProducts();
     getItemsInCart();
+    //getAllReviews();
   }, []);
 
   const getUser = async (decodedToken) => {
@@ -60,6 +62,14 @@ function App() {
       .catch(error => console.log(error));
   }
 
+  /* 
+  const getAllReviews = async () => {
+    await axios.get("https://localhost:44394/api/review/")
+      .then(response => setReviews(response.data))
+      .catch(error => console.log(error));
+  }
+  */
+
   return (
     <>
     { console.log(productsInCart) }
@@ -73,10 +83,9 @@ function App() {
               <Route exact path="/signup" render={ (props) => <SignUpForm {...props} getUser={getUser} getItemsInCart={getItemsInCart} /> } />
               <Route exact path="/dashboard" render={ (props) => <Home {...props} currentUser={currentUser} /> }  />
               <Route exact path="/shoppingcart" render={ (props) => <ShoppingCart {...props} products={products} productsInCart={productsInCart} currentUser={currentUser} /> } />
-              <Route exact path="/hub" render={ (props) => <ViewProducts {...props} products={products} currentUser={currentUser} /> } />
-              <Route exact path="/products" render={ (props) => <ShowAllProducts {...props} currentUser={currentUser} getUser={getUser} /> } />
+              <Route exact path="/hub" render={ (props) => <ViewProducts {...props} products={products} currentUser={currentUser} /> } /> {/* reviews={reviews}*/}
+              <Route exact path="/products" render={ (props) => <ShowAllProducts {...props} currentUser={currentUser} getUser={getUser} /> } /> 
               <Route exact path="/user/createproduct" render={(props) =><SellerNewProduct {...props} currentUser={currentUser} getUser={getUser} />} />
-              {/* <Route exact path="/shoppingcart" render={ (props) => <ShoppingCart {...props} currentUser={currentUser} getUser={getUser} /> } /> */}
             </>
           </Switch>
         </Router>

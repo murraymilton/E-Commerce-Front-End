@@ -1,7 +1,9 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom';
+import Rating from '../Rating/Rating';
 
-const ShowAllProducts = ({ products, productsInCart }) => {
+
+const ShowAllProducts = ({ products, productsInCart }) => { // reviews.. from App.js
   if (products === undefined)
   {
     return <Redirect to="/dashboard" />;
@@ -17,10 +19,10 @@ const ShowAllProducts = ({ products, productsInCart }) => {
                 <p>{item.name}</p>
                 <p>{item.description}</p>
                 <p>{item.price}</p>
-                {/* <Rating 
-                rating={product.rating} 
-                numReviews={product.numReviews}>
-                </Rating> */}
+                <Rating 
+                  rating={item.rating} 
+                  numReviews={item.numReviews} >
+                </Rating>
               </>
             );
           }
