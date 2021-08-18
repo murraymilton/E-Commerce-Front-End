@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 
-const NavigationBar = ({ currentUser, logout }) => {
+const NavigationBar = ({ currentUser, logout, getItemsInCart }) => {
     return (  
         <>
             <Navbar bg="dark" variant="dark" expand="lg">
@@ -22,10 +22,10 @@ const NavigationBar = ({ currentUser, logout }) => {
                         {!currentUser &&
                             <Nav.Link as={Link} to="/login">Login</Nav.Link>
                         }
-                        {!currentUser &&
-                            <Nav.Link as={Link} to="/products">Hub</Nav.Link>
+                        {currentUser &&
+                            <Nav.Link as={Link} to="/hub">Hub</Nav.Link>
                         }
-                        {!currentUser && 
+                        {currentUser && 
                             <Nav.Link as={Link} to="/shoppingcart">Cart</Nav.Link>
                         }
                     </Nav>

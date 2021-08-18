@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import ShowAllProducts from '../ShowAllProducts/showAllProducts';
 import ViewProducts from '../ViewProducts/viewProducts';
 
+
 const Home = (props) => {
     const [products, setProducts] = useState([]);
 
@@ -14,8 +15,10 @@ const Home = (props) => {
 
     return (  
         <>
-            <h1>User Home</h1>
-            <ViewProducts products={products} token={props.token} currentUser={props.currentUser} />
+            <section className="colored-section">
+                <h1>User Home</h1>
+                <ViewProducts products={products} token={props.token} currentUser={props.currentUser} />
+            </section>
         </>
     );
 }

@@ -1,25 +1,29 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom';
 
-const ShowAllProducts = ({ products }) => {
-    return ( 
-        <>
-        {
-            products.map((product) => {
-              return (
-                <section className="colored-section" key={product.id}>  
-                  <h1>Details of A Product</h1>
-                  <p>Name: {product.name}</p>
-                  <p>Price: {product.price}</p>
-                  <p>Description: {product.description}</p>
-                  <p>Category: {product.category}</p>
-                  <p>Price: {product.price}</p>
-                  <p>Average Rating: {product.reviews}</p>
-                </section>
-              )
-            })
-        }
-        </>
-    );
+const ShowAllProducts = ({ products, productsInCart }) => {
+  if (products === undefined)
+  {
+    return <Redirect to="/dashboard" />;
+  }
+  return (  
+    <>
+      {        
+        products.map((item) => {
+          if (item.productId === 1)
+          {
+            return (
+              <>
+                <p>{item.name}</p>
+                <p>{item.description}</p>
+                <p>{item.price}</p>
+              </>
+            );
+          }
+        })
+      }
+    </>
+  );
 }
  
 export default ShowAllProducts;

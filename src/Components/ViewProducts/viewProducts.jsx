@@ -10,10 +10,12 @@ const ViewProducts = ({ currentUser }) => {
     }
     return (
         <>
+            <section className="white-section">
             {
                 console.log(currentUser)
             }
-            <h1>Hi {currentUser.firstName}!</h1>
+            <div className="lead">Welcome, {currentUser.firstName}</div>
+            </section>
         </> 
     );
 }
