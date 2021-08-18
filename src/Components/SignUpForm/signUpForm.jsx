@@ -21,7 +21,8 @@ const SignUpForm = (props) => {
   }
   
   return (  
-    <>
+        <>
+        <section className="white-section">
             <h1>Sign Up</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
@@ -94,6 +95,7 @@ const SignUpForm = (props) => {
                 </div>
                 <button type="submit" className="btn btn-dark">Submit</button>
             </form>
+        </section>
         </>
     );
   }

@@ -6,7 +6,7 @@ const ShowAllProducts = ({ products }) => {
         {
             products.map((product) => {
               return (
-                <React.Fragment key={product.id}>
+                <section className="colored-section" key={product.id}>  
                   <h1>Details of A Product</h1>
                   <p>Name: {product.name}</p>
                   <p>Price: {product.price}</p>
@@ -14,7 +14,7 @@ const ShowAllProducts = ({ products }) => {
                   <p>Category: {product.category}</p>
                   <p>Price: {product.price}</p>
                   <p>Average Rating: {product.reviews}</p>
-                </React.Fragment>
+                </section>
               )
             })
         }
