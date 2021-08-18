@@ -40,7 +40,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <>
     { console.log(currentUser) }
       <section className="navigation-section">
         <Router>
@@ -60,7 +60,7 @@ function App() {
       <section className="white-section">
         <div>Sterling</div>
       </section>
-    </BrowserRouter>
+    </>
   );   
 }
 
