@@ -1,3 +1,6 @@
+Here is a link to the backend portion of our project: 
+https://github.com/SterlingHi/Ecommerce-Site.git
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
