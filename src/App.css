@@ -1,13 +1,19 @@
 /* Colored and White */
 .colored-section {
     text-align: center;
-    padding-top: 10rem;
-    padding-bottom: 10rem;
-    background-color: lightgreen;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    background-color: lightsteelblue;
 }
 
 .white-section {
     text-align: center;
-    padding-top: 10rem;
-    padding-bottom: 10rem;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+}
+
+.footer-section {
+    text-align: center;
+    padding-top: 4rem;
+    padding-bottom: 1rem;
 }
