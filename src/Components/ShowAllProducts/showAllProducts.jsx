@@ -1,4 +1,6 @@
 import React from 'react'
+import Rating from './Components/Rating/rating';
+
 
 const ShowAllProducts = ({ products }) => {
     return ( 
@@ -6,6 +8,7 @@ const ShowAllProducts = ({ products }) => {
         {
             products.map((product) => {
               return (
+                <div>
                 <section className="colored-section" key={product.id}>  
                   <h1>Details of A Product</h1>
                   <p>Name: {product.name}</p>
@@ -15,6 +18,11 @@ const ShowAllProducts = ({ products }) => {
                   <p>Price: {product.price}</p>
                   <p>Average Rating: {product.reviews}</p>
                 </section>
+                <Rating 
+                rating={product.rating} 
+                numReviews={product.numReviews}>
+                </Rating>
+                </div>
               )
             })
         }

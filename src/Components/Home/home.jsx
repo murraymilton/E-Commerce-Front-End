@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import Sell
 import ShowAllProducts from '../ShowAllProducts/showAllProducts';
 import ViewProducts from '../ViewProducts/viewProducts';
 

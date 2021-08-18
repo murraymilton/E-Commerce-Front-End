@@ -3,7 +3,7 @@ import {Redirect} from 'react-router-dom';
 import jwtDecode from 'jwt-decode'
 import Form from 'react-bootstrap/Form';
 import { InputGroup } from 'react-bootstrap';
-import { Button } from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button'
 import useForm from '../useForm/useForm';
 import axios from 'axios';
 

@@ -5,10 +5,11 @@ import Home from './Components/Home/home';
 import React, { useState, useEffect } from 'react';
 import LoginForm from './Components/LoginForm/loginForm';
 import SignUpForm from './Components/SignUpForm/signUpForm';
+import SellerNewProduct from './Components/SellProductForm/sellProductForm';
 import ShoppingCart from './Components/ShoppingCart/shoppingCart';
 import NavigationBar from './Components/NavigationBar/navigationBar';
 import ShowAllProducts from './Components/ShowAllProducts/showAllProducts';
-import { BrowserRouter as Router, Redirect, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Switch, Route, Link, BrowserRouter } from "react-router-dom";
 
 function App() {
   const [token, setToken] = useState(); // The token inside of localStorage.
@@ -39,7 +40,7 @@ function App() {
   }
 
   return (
-    <>
+    <BrowserRouter>
     { console.log(currentUser) }
       <section className="navigation-section">
         <Router>
@@ -50,6 +51,7 @@ function App() {
               <Route exact path="/signup" render={ (props) => <SignUpForm {...props} getUser={getUser} /> } />
               <Route exact path="/dashboard" render={ (props) => <Home {...props} currentUser={currentUser} getUser={getUser} /> }  />
               <Route exact path="/products" render={ (props) => <ShowAllProducts {...props} currentUser={currentUser} getUser={getUser} /> } />
+              <Route exact path="/user/createproduct" render={(props) =><SellerNewProduct {...props} currentUser={currentUser} getUser={getUser} />} />
               {/* <Route exact path="/shoppingcart" render={ (props) => <ShoppingCart {...props} currentUser={currentUser} getUser={getUser} /> } /> */}
             </>
           </Switch>
@@ -58,7 +60,7 @@ function App() {
       <section className="white-section">
         <div>Sterling</div>
       </section>
-    </>
+    </BrowserRouter>
   );   
 }
 
